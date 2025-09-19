@@ -1,36 +1,41 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue';
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
 
-// реактивная переменная счетчика
-const count = ref<number>(0);
+export default defineComponent({
+    name: 'CounterComponent',
+    setup() {
+        const count = ref<number> (0);
 
-const increment = (): void => {
-    count.value++;
-}
+        const increment = ():void => {
+            count.value++;
+        };
 
-const decrement = ():void => {
-    count.value--;
-}
+        const decrement = ():void => {
+            count.value++;
+        };
 
-const reset = ():void => {
-    count.value = 0;
-}
+        const reset = ():void => {
+            count.value = 0;
+        };
 
-// вычисляемое свойство, опционально
-const isCountHigh = computed((): boolean => {
-    return count.value > 10;
-})
+        return {
+            count,
+            increment,
+            decrement,
+            reset
+        };
+    }
+});
 </script>
 
 <template>
 <div class="counter">
-    <h2>Счетчик {{ count }}</h2>
+    <h2>Счетчик: {{ count }}</h2>
     <div class="counter-buttons">
-        <button @click="decrement" class="btn btn-decrement">-</button>
-        <button @click="reset" class="btn btn-reset">Сбросить</button>
-        <button @click="increment" class="btn btn-increment">+</button>
+        <button @click="decrement">-</button>
+        <button @click="reset">Сбросить</button>
+        <button @click="increment">+</button>
     </div>
-    <p class="counter-message" v-if="count > 10"> Счетчик превысил 10 🎉</p>
 </div>
 </template>
 
