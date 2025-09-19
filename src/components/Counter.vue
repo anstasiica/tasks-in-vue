@@ -1,25 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { useCounterStore } from '@/stores/counter';
 
-// реактивная переменная счетчика
-const count = ref<number>(0);
-
-const increment = (): void => {
-    count.value++;
-}
-
-const decrement = ():void => {
-    count.value--;
-}
-
-const reset = ():void => {
-    count.value = 0;
-}
-
-// вычисляемое свойство, опционально
-const isCountHigh = computed((): boolean => {
-    return count.value > 10;
-})
+const counterStore = useCounterStore();
 </script>
 
 <template>
