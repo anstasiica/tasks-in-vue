@@ -8,7 +8,4 @@ import Counter from './components/Counter.vue'
 </template>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
 </style>

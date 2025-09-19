@@ -1,24 +1,24 @@
-<script setup lang="ts">
-import { ref, computed } from 'vue';
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-// реактивная переменная счетчика
-const count = ref<number>(0);
-
-const increment = (): void => {
-    count.value++;
-}
-
-const decrement = ():void => {
-    count.value--;
-}
-
-const reset = ():void => {
-    count.value = 0;
-}
-
-// вычисляемое свойство, опционально
-const isCountHigh = computed((): boolean => {
-    return count.value > 10;
+export default defineComponent({
+    name: 'CounterComponent',
+    data() {
+        return {
+            count: 0 as number
+        };
+    },
+    methods: {
+        increment(): void {
+            this.count++;
+        },
+        decrement(): void {
+            this.count--;
+        },
+        reset(): void {
+            this.count = 0;
+        }
+    }
 })
 </script>
 
